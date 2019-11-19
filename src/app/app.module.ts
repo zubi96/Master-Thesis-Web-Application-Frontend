@@ -12,38 +12,48 @@ import { environment } from 'src/environments/environment';
 import { appRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { LocationsComponent } from './locations/locations.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 export function tokenGetter() {
-  return localStorage.getItem('token');
+   return localStorage.getItem('token');
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    DashboardComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    JwtModule.forRoot({
-      config: {
-         tokenGetter,
-         whitelistedDomains: [environment.apiUrl],
-         blacklistedRoutes: [environment.apiUrl + 'auth']
-      }
-   }),
-   HttpClientModule,
-   BrowserAnimationsModule,
-   ToastrModule.forRoot({
-     closeButton: true,
-     timeOut: 3000
-   }),
-   FormsModule,
-   ReactiveFormsModule,
-  ],
-  providers: [ErrorInterceptorProvider],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      LoginComponent,
+      PageNotFoundComponent,
+      AnalyticsComponent,
+      CategoriesComponent,
+      LocationsComponent,
+      SidebarComponent,
+      DashboardComponent
+   ],
+   imports: [
+      BrowserModule,
+      RouterModule.forRoot(appRoutes),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter,
+            whitelistedDomains: [environment.apiUrl],
+            blacklistedRoutes: [environment.apiUrl + 'auth']
+         }
+      }),
+      HttpClientModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot({
+         closeButton: true,
+         timeOut: 3000
+      }),
+      FormsModule,
+      ReactiveFormsModule,
+   ],
+   providers: [ErrorInterceptorProvider],
+   bootstrap: [AppComponent]
 })
 export class AppModule { }

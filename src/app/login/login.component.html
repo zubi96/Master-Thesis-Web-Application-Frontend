@@ -6,6 +6,7 @@
           <h5 class="card-title text-center">Sign In</h5>
 
           <form [formGroup]="loginForm" (ngSubmit)="login()">
+
             <div class="form-group">
               <input
                 [ngClass]="{'is-invalid': loginForm.get('username').errors && loginForm.get('username').touched}"
@@ -23,8 +24,8 @@
             </div>
 
             <button class="btn btn-lg btn-primary btn-block mt-5" type="submit" [disabled]="!loginForm.valid">Sign in</button>
+          
           </form>
-
         </div>
       </div>
     </div>
