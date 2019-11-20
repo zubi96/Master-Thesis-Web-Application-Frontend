@@ -12,12 +12,8 @@ import { environment } from 'src/environments/environment';
 import { appRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponent } from './pageNotFound/pageNotFound.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { LocationsComponent } from './locations/locations.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -27,12 +23,8 @@ export function tokenGetter() {
    declarations: [
       AppComponent,
       LoginComponent,
-      PageNotFoundComponent,
-      AnalyticsComponent,
-      CategoriesComponent,
-      LocationsComponent,
-      SidebarComponent,
-      DashboardComponent
+      AdminLayoutComponent,
+      PageNotFoundComponent
    ],
    imports: [
       BrowserModule,
@@ -51,7 +43,7 @@ export function tokenGetter() {
          timeOut: 3000
       }),
       FormsModule,
-      ReactiveFormsModule,
+      ReactiveFormsModule
    ],
    providers: [ErrorInterceptorProvider],
    bootstrap: [AppComponent]

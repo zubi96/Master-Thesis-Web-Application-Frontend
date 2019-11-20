@@ -1,0 +1,25 @@
+<div class="d-flex" [ngClass]="{toggled: isToggled}" id="wrapper">
+  <div class="border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"><b>Administration</b></div>
+    <div class="list-group list-group-flush">
+      <a href="#" [routerLink]="['/dashboard']" routerLinkActive="active"
+        class="list-group-item list-group-item-action">Dashboard</a>
+      <a href="#"  [routerLink]="['/categories']" routerLinkActive="active"
+        class="list-group-item list-group-item-action">Categories</a>
+      <a href="#" [routerLink]="['/locations']" routerLinkActive="active"
+        class="list-group-item list-group-item-action">Locations</a>
+        <a href="#" [routerLink]="['/analytics']" routerLinkActive="active"
+        class="list-group-item list-group-item-action">Analytics</a>
+      <a href="#" class="list-group-item list-group-item-action" (click)="logOut()">Sign out</a>
+    </div>
+  </div>
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary toggle-menu-button" (click)="toggleMenu()" id="menu-toggle"><i
+          class="fa fa-bars"></i></button>
+    </nav>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

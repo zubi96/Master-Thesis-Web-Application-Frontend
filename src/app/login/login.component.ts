@@ -17,9 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private toastr: ToastrService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    if(this.authService.loggedIn){
-      this.router.navigate(['/analytics'])
-    }
     this.createLoginForm();
   }
 
@@ -35,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.admin = Object.assign({}, this.loginForm.value);
       this.authService.login(this.admin).subscribe(() => {
         this.toastr.success('Logged in successfully!');
-        this.router.navigate(['/analytics']);
+        this.router.navigate(['/dashboard']);
       }, error => {
         this.toastr.error(error);
       }

@@ -16,19 +16,9 @@ export class AppComponent {
   formBuilder: any;
   admin: any;
 
-  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) { }
+  constructor() { }
 
   OnInit() {
   }
 
-  toggleMenu() {
-    this.isToggled = !this.isToggled;
-  }
-
-  logOut() {
-    localStorage.removeItem('token');
-    this.authService.decodedToken = null;
-    this.router.navigate(['/login']);
-    this.toastr.info('Logged out');
-  }
 }
