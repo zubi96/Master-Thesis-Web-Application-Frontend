@@ -8,12 +8,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 export const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: '',
-     component: AdminLayoutComponent,
-     canActivate: [AuthGuard],
-    children: [{
+    {
         path: '',
-        loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(mod => mod.AdminLayoutModule)
-    }]},
+        component: AdminLayoutComponent,
+        canActivate: [AuthGuard],
+        children: [{
+            path: '',
+            loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(mod => mod.AdminLayoutModule)
+        }]
+    },
     { path: '**', component: PageNotFoundComponent, canActivate: [AuthGuard] }
 ];

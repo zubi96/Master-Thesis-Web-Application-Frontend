@@ -35,6 +35,16 @@ body {
   .sidebar-link{
     border-bottom: 1px solid black;
   }
+
+  .log-off-link{
+    color: #ffffff;
+    background-color: #DC3545;
+  }
+
+  .log-off-link:hover{
+    color: #ffffff;
+    background-color: rgb(201, 51, 66);
+  }
   
   @media (min-width: 768px) {
     #sidebar-wrapper {

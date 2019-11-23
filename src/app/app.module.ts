@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { environment } from 'src/environments/environment';
 import { appRoutes } from './app.routing';
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthService } from './_services/auth.service';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -32,20 +34,20 @@ export function tokenGetter() {
       JwtModule.forRoot({
          config: {
             tokenGetter,
-            whitelistedDomains: [environment.apiUrl],
-            blacklistedRoutes: [environment.apiUrl + 'auth']
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/auth']
          }
       }),
       HttpClientModule,
       BrowserAnimationsModule,
       ToastrModule.forRoot({
-         closeButton: true,
          timeOut: 3000
       }),
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      ModalModule.forRoot()
    ],
-   providers: [ErrorInterceptorProvider],
+   providers: [ErrorInterceptorProvider, AuthService],
    bootstrap: [AppComponent]
 })
 export class AppModule { }

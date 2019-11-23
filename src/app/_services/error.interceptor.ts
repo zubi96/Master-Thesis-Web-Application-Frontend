@@ -13,7 +13,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(req).pipe(
             catchError(error => {
                 if (error.status === 401) {
-                    return throwError('Login credentials are not correct');
+                    return throwError('You are not authorized to access this page');
                 }
                 if (error instanceof HttpErrorResponse) {
                     const applicationError = error.headers.get('Application-Error');
@@ -30,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                             }
                         }
                     } else{
-                        serverError = 'Server Error';
+                        serverError = error.error;
                     }
                     return throwError(modelStateErrors || serverError || 'Server Error');
                 }

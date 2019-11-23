@@ -3,14 +3,14 @@
     <div class="sidebar-heading"><b>Administration</b></div>
     <div class="list-group list-group-flush">
       <a href="#" [routerLink]="['/dashboard']" routerLinkActive="active"
-        class="list-group-item list-group-item-action">Dashboard</a>
+        class="list-group-item list-group-item-action"><i class="fa fa-tachometer mr-4"></i>Dashboard</a>
       <a href="#"  [routerLink]="['/categories']" routerLinkActive="active"
-        class="list-group-item list-group-item-action">Categories</a>
+        class="list-group-item list-group-item-action"><i class="fa fa-certificate mr-4"></i>Categories</a>
       <a href="#" [routerLink]="['/locations']" routerLinkActive="active"
-        class="list-group-item list-group-item-action">Locations</a>
+        class="list-group-item list-group-item-action"><i class="fa fa-map mr-4"></i>Locations</a>
         <a href="#" [routerLink]="['/analytics']" routerLinkActive="active"
-        class="list-group-item list-group-item-action">Analytics</a>
-      <a href="#" class="list-group-item list-group-item-action" (click)="logOut()">Sign out</a>
+        class="list-group-item list-group-item-action"><i class="fa fa-pie-chart mr-4"></i>Analytics</a>
+      <a href="#" class="list-group-item list-group-item-action log-off-link" (click)="logOut()"><i class="fa fa-power-off mr-4"></i>Sign out</a>
     </div>
   </div>
   <div id="page-content-wrapper">
@@ -18,7 +18,7 @@
       <button class="btn btn-primary toggle-menu-button" (click)="toggleMenu()" id="menu-toggle"><i
           class="fa fa-bars"></i></button>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -1,3 +1,54 @@
-<p>
-  categories works!
-</p>
+<h4>Categories</h4>
+
+<button class="btn btn-lg btn-success" (click)="createCategoryModal(createModal)">Add new</button>
+
+<table *ngIf="categories" class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories">
+            <td>{{category.name}}</td>
+            <td><button class="btn btn-info" (click)="editCategoryModal(category.id, editModal)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteCategoryModal(category.id, deleteModal)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #createModal>
+    <div class="modal-body text-center">
+        <h5>Add new category</h5>
+        <form #createCategoryForm="ngForm" (ngSubmit)="confirmCreation()">
+            <input type="text" name="category-name" required class="form-control mt-3 mb-3" placeholder="Category name:"
+                [(ngModel)]="model.name" autofocus>
+            <button type="submit" class="btn btn-success mr-2">Add</button>
+            <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #deleteModal>
+    <div class="modal-body text-center">
+        <h5>Do you want to delete this category?</h5>
+        <p>Deleting this category will delete all locations that belong to it.</p>
+        <button type="button" class="btn btn-danger mr-2" (click)="confirmDeletion()">Delete</button>
+        <button type="button" class="btn btn-success" (click)="close()">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #editModal>
+    <div class="modal-body text-center">
+        <h5>Edit category</h5>
+        <form #editCategoryForm="ngForm" (ngSubmit)="confirmEdit()">
+                <input type="text" name="category-name" required class="form-control mt-3 mb-3" placeholder="Category name:"
+                    [(ngModel)]="model.name" autofocus>
+                <button type="submit" class="btn btn-success mr-2">Edit</button>
+                <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+            </form>
+    </div>
+</ng-template>

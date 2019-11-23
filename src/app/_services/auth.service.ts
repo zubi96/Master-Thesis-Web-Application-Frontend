@@ -8,14 +8,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = environment.apiUrl + 'auth/';
+  apiUrl = environment.baseUrl + 'auth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
   constructor(private http: HttpClient) {}
 
   login(model: any) {
-    return this.http.post(this.baseUrl, model).pipe(
+    return this.http.post(this.apiUrl, model).pipe(
       map((response: any) => {
         const token = response.token;
         if (token) {
