@@ -1,0 +1,74 @@
+<div class="row mb-4">
+  <div class="col-md-3">
+
+    <h4>Add photos:</h4>
+    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+      [uploader]="uploader" class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+      <i class="fa fa-upload fa-2x"></i>
+      Drop photos here
+    </div>
+    <input type="file" ng2FileSelect [uploader]="uploader" multiple />
+  </div>
+
+  <div class="col-md-9 mb-4 mt-4" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+    <h4>Upload queue</h4>
+    <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th width="50%">Name</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of uploader.queue">
+          <td class="break-long-text"><strong>{{ item?.file?.name }}</strong></td>
+          <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <div>
+        Queue progress:
+        <div class="progress mb-4">
+          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+        [disabled]="!uploader.getNotUploadedItems().length">
+        <span class="fa fa-upload"></span> Upload
+      </button>
+      <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
+        [disabled]="!uploader.isUploading">
+        <span class="fa fa-ban"></span> Cancel
+      </button>
+      <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()"
+        [disabled]="!uploader.queue.length">
+        <span class="fa fa-trash"></span> Remove
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<h4>Gallery:</h4>
+<div class="row mt-3">
+    <div class="card mb-4 text-center col-lg-2 col-md-6 col-sm-12" *ngFor="let photo of location.photos">
+        <div class="card-img-wrapper">
+          <img class="card-img-top img-responsive location-image" src="{{photo.url}}" alt="{{ location.name }}">
+          <ul class="list-inline member-icons animate text-center">
+            <li class="list-inline-item"><button class="btn btn-danger" (click)="deletePhotoModal(photo.id, deleteModal)"><i class="fa fa-trash"></i></button></li>
+          </ul>
+        </div>
+      </div>
+</div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <h5>Do you want to delete this photo?</h5>
+    <button type="button" class="btn btn-danger mr-2" (click)="confirmDeletion()">Delete</button>
+    <button type="button" class="btn btn-success" (click)="close()">Close</button>
+  </div>
+</ng-template>

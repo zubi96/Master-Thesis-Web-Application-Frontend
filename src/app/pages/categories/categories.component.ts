@@ -3,7 +3,6 @@ import { Category } from 'src/app/_models/category';
 import { CategoryService } from 'src/app/_services/category.service';
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-categories',
@@ -31,6 +30,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   createCategoryModal(template: TemplateRef<any>) {
+    this.model.name = '';
     this.modalRef = this.modalService.show(template, { class: 'modal-md' });
   }
 

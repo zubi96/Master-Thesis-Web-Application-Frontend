@@ -15,7 +15,7 @@ export const appRoutes: Routes = [
         children: [{
             path: '',
             loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(mod => mod.AdminLayoutModule)
-        }]
+        }],
     },
     { path: '**', component: PageNotFoundComponent, canActivate: [AuthGuard] }
 ];

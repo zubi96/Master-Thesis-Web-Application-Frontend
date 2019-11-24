@@ -1,6 +1,5 @@
 <h4>Categories</h4>
-
-<button class="btn btn-lg btn-success" (click)="createCategoryModal(createModal)">Add new</button>
+<button class="btn btn-lg btn-success" (click)="createCategoryModal(createModal)"><i class="fa fa-plus"></i></button>
 
 <table *ngIf="categories" class="table table-striped mt-3">
     <thead>
@@ -13,8 +12,8 @@
     <tbody>
         <tr *ngFor="let category of categories">
             <td>{{category.name}}</td>
-            <td><button class="btn btn-info" (click)="editCategoryModal(category.id, editModal)">Edit</button></td>
-            <td><button class="btn btn-danger" (click)="deleteCategoryModal(category.id, deleteModal)">Delete</button>
+            <td><button class="btn btn-info" (click)="editCategoryModal(category.id, editModal)"><i class="fa fa-pencil"></i></button></td>
+            <td><button class="btn btn-danger" (click)="deleteCategoryModal(category.id, deleteModal)"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
     </tbody>
@@ -24,9 +23,21 @@
     <div class="modal-body text-center">
         <h5>Add new category</h5>
         <form #createCategoryForm="ngForm" (ngSubmit)="confirmCreation()">
+            <input type="text" name="category-name" required class="form-control mt-3 mb-3" placeholder="Category name"
+                [(ngModel)]="model.name" autofocus>
+            <button type="submit" class="btn btn-success mr-2" [disabled]="!createCategoryForm.valid">Add</button>
+            <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #editModal>
+    <div class="modal-body text-center">
+        <h5>Edit category</h5>
+        <form #editCategoryForm="ngForm" (ngSubmit)="confirmEdit()">
             <input type="text" name="category-name" required class="form-control mt-3 mb-3" placeholder="Category name:"
                 [(ngModel)]="model.name" autofocus>
-            <button type="submit" class="btn btn-success mr-2">Add</button>
+            <button type="submit" class="btn btn-success mr-2" [disabled]="!editCategoryForm.valid">Edit</button>
             <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
         </form>
     </div>
@@ -38,17 +49,5 @@
         <p>Deleting this category will delete all locations that belong to it.</p>
         <button type="button" class="btn btn-danger mr-2" (click)="confirmDeletion()">Delete</button>
         <button type="button" class="btn btn-success" (click)="close()">Close</button>
-    </div>
-</ng-template>
-
-<ng-template #editModal>
-    <div class="modal-body text-center">
-        <h5>Edit category</h5>
-        <form #editCategoryForm="ngForm" (ngSubmit)="confirmEdit()">
-                <input type="text" name="category-name" required class="form-control mt-3 mb-3" placeholder="Category name:"
-                    [(ngModel)]="model.name" autofocus>
-                <button type="submit" class="btn btn-success mr-2">Edit</button>
-                <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
-            </form>
     </div>
 </ng-template>

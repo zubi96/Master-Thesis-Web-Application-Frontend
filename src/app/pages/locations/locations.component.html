@@ -1,3 +1,27 @@
-<p>
-  locations works!
-</p>
+<h4>Locations</h4>
+<button *ngIf="categories" class="btn btn-lg btn-success" (click)="createLocationModal(createModal)"><i class="fa fa-plus"></i></button>
+
+<div class="row mt-3">
+  <div *ngFor="let location of locations" class="col-lg-2 col-md-6 col-sm-12">
+    <app-location-card [location]="location" (loadLocations)="loadLocations()"></app-location-card>
+  </div>
+</div>
+
+<ng-template #createModal>
+  <div class="modal-body">
+    <h5>Add new location</h5>
+    <form #createCategoryForm="ngForm" (ngSubmit)="confirmCreation()">
+      <input type="text" name="category-name" class="form-control mt-3 mb-3" placeholder="Location name"
+        [(ngModel)]="model.name" required autofocus>
+        <label for="category">Category:</label>
+      <select [(ngModel)]="model.categoryId" class="form-control mb-3" id="category" name="category">
+        <option *ngFor="let category of categories" required [value]="category.id">
+          {{category.name}}
+        </option>
+      </select>
+
+      <button type="submit" class="btn btn-success mr-2" [disabled]="!createCategoryForm.valid">Add</button>
+      <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+    </form>
+  </div>
+</ng-template>

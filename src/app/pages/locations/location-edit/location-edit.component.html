@@ -1,0 +1,36 @@
+<button class="btn btn-lg btn-primary mb-4" [routerLink]="['/locations']" routerLinkActive="router-link-active"><i
+    class="fa fa-arrow-left"></i></button>
+
+<h4>{{location.name}}</h4>
+
+<div class="mb-3">
+  <tabset type="tabs">
+    <tab heading="Basic info" class="mt-3">
+      <form #editBasicInfoForm="ngForm" (ngSubmit)="saveBasicInfo()">
+        <h4>Location name:</h4>
+        <input type="text" name="name" class="form-control mb-4" [(ngModel)]="location.name" autofocus>
+        <h4>Category:</h4>
+        <select [(ngModel)]="location.categoryId" class="form-control mb-4" id="category" name="category">
+          <option *ngFor="let category of categories" required [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+        <h4>Short description:</h4>
+        <textarea type="text" rows="3" name="short-description" class="form-control mb-4"
+          [(ngModel)]="location.shortDescription"></textarea>
+        <h4>Long description:</h4>
+        <textarea type="text" rows="7" name="long-description" class="form-control"
+          [(ngModel)]="location.longDescription"></textarea>
+        <button class="btn btn-success mt-3 mb-3" [disabled]="!editBasicInfoForm.dirty">Save changes</button>
+      </form>
+    </tab>
+
+    <tab heading="Map" class="mt-3">
+      <app-location-map [location]="location"></app-location-map>
+    </tab>
+
+    <tab heading="Photos" class="mt-3">
+      <app-location-photo [location]="location"></app-location-photo>
+    </tab>
+  </tabset>
+</div>

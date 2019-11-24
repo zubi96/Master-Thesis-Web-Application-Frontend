@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-4">
+      <form #editMapForm="ngForm" (ngSubmit)="saveMap()">
+        <h4>Latitude:</h4>
+        <input type="text" name="lat" class="form-control mb-4" [(ngModel)]="location.lat">
+        <h4>Longitude:</h4>
+        <input type="text" name="lng" class="form-control mb-4" [(ngModel)]="location.lng">
+        <button type="submit" class="btn btn-success mt-3 mb-3" [disabled]="!editMapForm.dirty">Save changes</button>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <agm-map [draggableCursor]=true [latitude]="location.lat" [longitude]="location.lng" [zoom]=17>
+        <agm-marker (dragEnd)="markerDragEnd($event)" [markerDraggable]=true [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
