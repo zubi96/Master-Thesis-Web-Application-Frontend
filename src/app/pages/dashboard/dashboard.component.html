@@ -1,3 +1,56 @@
-<p>
-  dashboard works!
-</p>
+<h4>Dashboard</h4>
+<div class="row">
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title text-center">Number of users</h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{numberOfUsers}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title text-center">Number of locations</h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{numberOfLocations}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title text-center">Scanned today</h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-center">{{scannedToday}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card card-signin my-5">
+        <div class="card-header">
+          <h4 class="card-title">Top three locations</h4>
+        </div>
+        <div class="card-body">
+            <table *ngIf="locationScansCount" class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th>Location name</th>
+                    <th>Times scanned</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let locationsScan of locationScansCount">
+                    <td>{{locationsScan.name}}</td>
+                    <td>{{locationsScan.scanCount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+</div>

@@ -19,9 +19,6 @@ import { AuthService } from './_services/auth.service';
 import { CategoryService } from './_services/category.service';
 import { LocationService } from './_services/location.service';
 import { LocationEditResolver } from './_resolvers/location-edit.resolver';
-import { AgmCoreModule } from '@agm/core';
-import { ImageUploaderModule } from 'ngx-image-uploader';
-import { NgxGalleryModule } from 'ngx-gallery';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -58,7 +55,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       }),
       ReactiveFormsModule
    ],
-   providers: [ErrorInterceptorProvider, AuthService, CategoryService, 
+   providers: [ErrorInterceptorProvider, AuthService, CategoryService,
                LocationService, LocationEditResolver, { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }],
    bootstrap: [AppComponent]
 })

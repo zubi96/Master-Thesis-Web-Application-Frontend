@@ -42,4 +42,16 @@ export class LocationCardComponent implements OnInit {
   close() {
     this.modalRef.hide();
   }
+
+  getQrCode() {
+    this.locationService.getQRCodeBase64(this.location.id).subscribe(response => {
+      this.toastr.success('QR code generated!');
+      const QRCodeBase64 = response['value'];
+
+      const link = document.createElement('a');
+      link.href = 'data:image/png;base64,' + QRCodeBase64;
+      link.download = 'QRCode - ' + this.location.name;
+      link.click();
+    });
+  }
 }

@@ -11,4 +11,5 @@ export interface Location {
     categoryId: number;
     categoryName: string;
     photos?: Photo[];
+    qrCodeUrl: string;
 }

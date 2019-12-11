@@ -1,3 +1,85 @@
-<p>
-  analytics works!
-</p>
+<h4>Analytics</h4>
+
+<div class="row">
+
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title">Users by country</h4>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart [data]="countryCountData" [labels]="countryCountLabels" [chartType]="countryCountChartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title">Users by age</h4>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart [data]="ageCountData" [labels]="ageCountLabels" [chartType]="ageCountChartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title">Users by gender</h4>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart [data]="genderCountData" [labels]="genderCountLabels" [chartType]="genderCountChartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card card-signin my-5">
+      <div class="card-header">
+        <h4 class="card-title">Number of times any location was scanned during active year</h4>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart [datasets]="scanByMonthsData" [labels]="scanByMonthsLabels" [options]="scanByMonthOptions"
+            [plugins]="scanByMonthPlugins" [legend]="scanByMonthLegend" [chartType]="scanByMonthChartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card card-signin my-5">
+        <div class="card-header">
+          <h4 class="card-title">Number of scans by location</h4>
+        </div>
+        <div class="card-body">
+            <table *ngIf="locationScansCount" class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th>Location name</th>
+                    <th>Times scanned</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let locationsScan of locationScansCount">
+                    <td>{{locationsScan.name}}</td>
+                    <td>{{locationsScan.scanCount}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+</div>

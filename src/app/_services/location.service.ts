@@ -35,4 +35,8 @@ export class LocationService {
   deletePhoto(id: number) {
     return this.http.delete(this.apiUrl + 'photos/' + id);
   }
+
+  getQRCodeBase64(id: number) {
+    return this.http.get(this.apiUrl + 'getQRCode/' + id);
+  }
 }
