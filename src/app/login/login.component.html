@@ -3,10 +3,10 @@
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card card-signin my-5">
         <div class="card-body">
+          <img src="../../assets/login.png">
           <h5 class="card-title text-center">Sign In</h5>
 
           <form [formGroup]="loginForm" (ngSubmit)="login()">
-
             <div class="form-group">
               <input
                 [ngClass]="{'is-invalid': loginForm.get('username').errors && loginForm.get('username').touched}"
@@ -22,9 +22,7 @@
               <div class="invalid-feedback"
                 *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')">Password is required.</div>
             </div>
-
             <button class="btn btn-lg btn-primary btn-block mt-5" type="submit" [disabled]="!loginForm.valid">Sign in</button>
-          
           </form>
         </div>
       </div>

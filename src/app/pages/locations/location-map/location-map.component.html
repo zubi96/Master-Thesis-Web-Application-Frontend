@@ -2,9 +2,9 @@
     <div class="col-md-4">
       <form #editMapForm="ngForm" (ngSubmit)="saveMap()">
         <h4>Latitude:</h4>
-        <input type="text" name="lat" class="form-control mb-4" [(ngModel)]="location.lat">
+        <input type="text" name="lat" class="form-control mb-4" disabled [(ngModel)]="location.lat">
         <h4>Longitude:</h4>
-        <input type="text" name="lng" class="form-control mb-4" [(ngModel)]="location.lng">
+        <input type="text" name="lng" class="form-control mb-4" disabled [(ngModel)]="location.lng">
         <button type="submit" class="btn btn-success mt-3 mb-3" [disabled]="!editMapForm.dirty">Save changes</button>
       </form>
     </div>

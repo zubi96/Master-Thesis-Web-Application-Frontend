@@ -50,7 +50,7 @@ export class LocationCardComponent implements OnInit {
 
       const link = document.createElement('a');
       link.href = 'data:image/png;base64,' + QRCodeBase64;
-      link.download = 'QRCode - ' + this.location.name;
+      link.download = 'QRCode - ' + this.location.name + '.jpg';
       link.click();
     });
   }

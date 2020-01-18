@@ -50,4 +50,11 @@ body {
       margin-left: -15rem;
     }
   }
+
+  img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 50px;
+  }
   
